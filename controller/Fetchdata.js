@@ -20,19 +20,24 @@ const getTime=()=>{
 }
 
 const fetchData=async()=>{
-    
-    let lat=18.530252
-    let lon=73.849820
+    try{
 
-    await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}`)
-    .then(async(response)=>{
-        data=response.data.list[0]
-        date_=getDate()
-        await dataModel.create({components:data.components,date:new Date,date_:getDate(),time:getTime()})
-      
-        // console.log(data.components)
-        console.log("Scheduled",new Date())
-    })
+        let lat=18.530252
+        let lon=73.849820
+        
+        await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}`)
+        .then(async(response)=>{
+            data=response.data.list[0]
+            date_=getDate()
+            await dataModel.create({components:data.components,date:new Date,date_:getDate(),time:getTime()})
+            
+            // console.log(data.components)
+            console.log("Scheduled",new Date())
+        })
+    }
+    catch(e){
+        console.log(e)
+    }
 }
 
 
