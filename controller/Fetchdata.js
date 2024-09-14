@@ -8,7 +8,7 @@ dotenv.config()
 const getDate=()=>{
     let date=new Date()
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
-}
+} 
 
 const getTime=()=>{
     let date=new Date()
