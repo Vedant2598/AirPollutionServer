@@ -28,7 +28,7 @@ cron.schedule("0 22 * * *",()=>{
 })
 
 connectDB().then(()=>{
-    server.listen(3000,()=>{
+    server.listen(5000,()=>{
         console.log("server running on http://192.168.0.100:3000")
     }) 
 })
